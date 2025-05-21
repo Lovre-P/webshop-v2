@@ -19,7 +19,7 @@ const ProductListPage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>(searchParams.get('category') || '');
   const [sortBy, setSortBy] = useState<string>(searchParams.get('sort') || 'name_asc');
   const [currentPage, setCurrentPage] = useState<number>(parseInt(searchParams.get('page') || '1', 10));
-  
+
   const searchTerm = searchParams.get('search') || '';
 
   useEffect(() => {
@@ -34,10 +34,10 @@ const ProductListPage: React.FC = () => {
           filteredProducts = filteredProducts.filter(p => p.category === categoryObj.name);
         }
       }
-      
+
       if (searchTerm) {
-        filteredProducts = filteredProducts.filter(p => 
-          p.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+        filteredProducts = filteredProducts.filter(p =>
+          p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
           p.description.toLowerCase().includes(searchTerm.toLowerCase())
         );
       }
@@ -79,7 +79,7 @@ const ProductListPage: React.FC = () => {
     setSortBy(e.target.value);
     setCurrentPage(1);
   };
-  
+
   const paginatedProducts = useMemo(() => {
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
     return products.slice(startIndex, startIndex + ITEMS_PER_PAGE);
@@ -109,10 +109,10 @@ const ProductListPage: React.FC = () => {
 
       <div className="flex flex-col md:flex-row gap-8">
         <div className="w-full md:w-1/4">
-          <Sidebar 
-            categories={MOCK_CATEGORIES} 
+          <Sidebar
+            categories={MOCK_CATEGORIES}
             currentCategory={selectedCategory}
-            onCategorySelect={handleCategorySelect} 
+            onCategorySelect={handleCategorySelect}
           />
         </div>
         <div className="w-full md:w-3/4">
@@ -122,8 +122,8 @@ const ProductListPage: React.FC = () => {
               Showing {paginatedProducts.length} of {products.length} products
             </p>
             <div className="relative">
-              <select 
-                value={sortBy} 
+              <select
+                value={sortBy}
                 onChange={handleSortChange}
                 className="appearance-none bg-neutral-100 border border-neutral-300 text-neutral-700 py-2 px-4 pr-8 rounded-md leading-tight focus:outline-none focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary text-sm"
               >
@@ -147,7 +147,7 @@ const ProductListPage: React.FC = () => {
             </div>
           ) : (
             <div className="text-center py-12 bg-white rounded-lg shadow">
-              <img src="assets/images/no-results.svg" alt="No products found" className="mx-auto h-40 mb-4" /> {/* Add a relevant SVG or image */}
+              <img src={PLACEHOLDER_IMAGE_URL(300, 200)} alt="No products found" className="mx-auto h-40 mb-4" />
               <h3 className="text-xl font-semibold text-neutral-700 mb-2">No Products Found</h3>
               <p className="text-neutral-500 mb-4">
                 We couldn't find any products matching your criteria. Try adjusting your filters or search term.
@@ -161,8 +161,8 @@ const ProductListPage: React.FC = () => {
           {/* Pagination */}
           {totalPages > 1 && (
             <div className="mt-10 flex justify-center items-center space-x-2">
-              <Button 
-                onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))} 
+              <Button
+                onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
                 disabled={currentPage === 1}
                 variant="outline"
                 size="sm"
@@ -184,8 +184,8 @@ const ProductListPage: React.FC = () => {
                     <span key={`dots-${pageNumber}`} className="px-2 py-1 text-sm text-neutral-500 hidden sm:inline-flex">...</span>
                  ) : null
               ))}
-              <Button 
-                onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))} 
+              <Button
+                onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
                 disabled={currentPage === totalPages}
                 variant="outline"
                 size="sm"

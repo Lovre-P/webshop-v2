@@ -13,10 +13,10 @@ interface SidebarProps {
   // Add more filter props like price range, brands etc.
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ 
-  categories = MOCK_CATEGORIES, 
-  currentCategory, 
-  onCategorySelect 
+const Sidebar: React.FC<SidebarProps> = ({
+  categories = MOCK_CATEGORIES,
+  currentCategory,
+  onCategorySelect
 }) => {
   return (
     <aside className="w-full md:w-64 lg:w-72 bg-white p-6 rounded-lg shadow-lg space-y-6">
@@ -30,8 +30,8 @@ const Sidebar: React.FC<SidebarProps> = ({
                 <button
                   onClick={() => onCategorySelect && onCategorySelect(category.id)}
                   className={`block w-full text-left px-3 py-2 rounded-md transition-colors
-                    ${currentCategory === category.id 
-                      ? 'bg-primary text-white font-medium' 
+                    ${currentCategory === category.id
+                      ? 'bg-primary text-white font-medium'
                       : 'hover:bg-neutral-100 text-neutral-700'
                     }`}
                 >
@@ -43,8 +43,8 @@ const Sidebar: React.FC<SidebarProps> = ({
                 <button
                   onClick={() => onCategorySelect && onCategorySelect('')} // Empty string for "All Categories"
                   className={`block w-full text-left px-3 py-2 rounded-md transition-colors
-                    ${!currentCategory 
-                      ? 'bg-primary text-white font-medium' 
+                    ${!currentCategory
+                      ? 'bg-primary text-white font-medium'
                       : 'hover:bg-neutral-100 text-neutral-700'
                     }`}
                 >
@@ -64,13 +64,13 @@ const Sidebar: React.FC<SidebarProps> = ({
           <span>$1000</span>
         </div>
       </div>
-      
+
       {/* Promotional Banner (Placeholder) */}
       <div className="mt-6 border-t pt-6">
         <img src={PLACEHOLDER_IMAGE_URL(250,150)} alt="Promo Banner" className="rounded-md mb-2" />
         <h4 className="font-semibold text-neutral-700">Special Offer!</h4>
         <p className="text-sm text-neutral-600">{LOREM_IPSUM_SHORT.substring(0,50)}...</p>
-        <Link to="/products?promo=special" className="text-sm text-primary hover:underline font-medium mt-1 inline-block">
+        <Link to="products?promo=special" className="text-sm text-primary hover:underline font-medium mt-1 inline-block">
           Shop Now
         </Link>
       </div>

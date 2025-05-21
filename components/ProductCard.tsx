@@ -19,7 +19,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     // TODO: Add notification "Product added to cart"
     alert(`${product.name} added to cart!`);
   };
-  
+
   const renderStars = (rating?: number) => {
     if (typeof rating !== 'number') return null;
     const stars = [];
@@ -41,19 +41,19 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
   return (
     <div className="bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl flex flex-col">
-      <Link to={`/products/${product.id}`} className="block">
-        <img 
-          src={product.imageUrl} 
-          alt={product.name} 
-          className="w-full h-56 object-cover" 
+      <Link to={`products/${product.id}`} className="block">
+        <img
+          src={product.imageUrl}
+          alt={product.name}
+          className="w-full h-56 object-cover"
         />
       </Link>
       <div className="p-4 flex flex-col flex-grow">
-        <Link to={`/products/${product.id}`} className="block">
+        <Link to={`products/${product.id}`} className="block">
           <h3 className="text-lg font-semibold text-neutral-800 hover:text-primary transition-colors mb-1 truncate">{product.name}</h3>
         </Link>
         <p className="text-sm text-neutral-600 mb-2 flex-grow">{product.description}</p>
-        
+
         {product.rating && (
           <div className="mb-2">
             {renderStars(product.rating)}
@@ -68,9 +68,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 <span className="text-xs font-medium bg-red-100 text-red-700 px-2 py-0.5 rounded-full">Out of Stock</span>
             )}
         </div>
-        
-        <Button 
-            onClick={handleAddToCart} 
+
+        <Button
+            onClick={handleAddToCart}
             disabled={product.stock <= 0}
             className="w-full mt-auto"
             variant="primary"

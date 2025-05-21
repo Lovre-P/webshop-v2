@@ -59,7 +59,7 @@ const ProductDetailPage: React.FC = () => {
   const handleOptionChange = (optionName: string, value: string) => {
     setSelectedOptions(prev => ({ ...prev, [optionName]: value }));
   };
-  
+
   const renderStars = (rating?: number) => {
     if (typeof rating !== 'number') return <span className="text-sm text-neutral-500">No reviews yet</span>;
     const stars = [];
@@ -80,8 +80,8 @@ const ProductDetailPage: React.FC = () => {
   const relatedProducts = MOCK_PRODUCTS.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4);
 
   const breadcrumbItems = [
-    { name: 'Products', path: '/products' },
-    { name: product.category, path: `/products?category=${product.category.toLowerCase().replace(' ', '-')}`},
+    { name: 'Products', path: 'products' },
+    { name: product.category, path: `products?category=${product.category.toLowerCase().replace(' ', '-')}`},
     { name: product.name }
   ];
 
@@ -89,7 +89,7 @@ const ProductDetailPage: React.FC = () => {
     <div className="space-y-10">
       {notification && <Notification message={notification.message} type={notification.type} onClose={() => setNotification(null)} />}
       <Breadcrumbs items={breadcrumbItems} />
-      
+
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 bg-white p-6 md:p-8 rounded-lg shadow-xl">
         {/* Product Gallery */}
         <div className="space-y-4">
@@ -99,8 +99,8 @@ const ProductDetailPage: React.FC = () => {
           {/* Thumbnails (simplified - could be multiple images) */}
           <div className="grid grid-cols-4 gap-2">
             {[product.imageUrl, PLACEHOLDER_IMAGE_URL(100,100), PLACEHOLDER_IMAGE_URL(100,101), PLACEHOLDER_IMAGE_URL(100,102)].slice(0,4).map((img, idx) => (
-              <button 
-                key={idx} 
+              <button
+                key={idx}
                 onClick={() => setMainImage(img)}
                 className={`aspect-square rounded-md overflow-hidden border-2 ${mainImage === img ? 'border-primary' : 'border-transparent'} hover:border-primary transition`}
               >
@@ -138,22 +138,22 @@ const ProductDetailPage: React.FC = () => {
               </div>
             </div>
           ))}
-          
+
           {/* Quantity & Add to Cart */}
           <div className="flex items-center space-x-4 pt-2">
             <div className="flex items-center border border-neutral-300 rounded-md">
               <Button variant="ghost" size="sm" onClick={() => setQuantity(Math.max(1, quantity - 1))} className="!px-3 !rounded-r-none !border-r border-neutral-300">-</Button>
-              <input 
-                type="number" 
-                value={quantity} 
-                readOnly 
+              <input
+                type="number"
+                value={quantity}
+                readOnly
                 className="w-12 text-center focus:outline-none text-sm"
               />
               <Button variant="ghost" size="sm" onClick={() => setQuantity(quantity + 1)} className="!px-3 !rounded-l-none !border-l border-neutral-300">+</Button>
             </div>
-            <Button 
-              onClick={handleAddToCart} 
-              disabled={product.stock <= 0} 
+            <Button
+              onClick={handleAddToCart}
+              disabled={product.stock <= 0}
               size="lg"
               className="flex-grow"
             >

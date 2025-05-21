@@ -1,0 +1,13 @@
+include:
+  - "*.tsx"
+  - "*.ts"
+
+defaults:
+  - scope:
+      path: "*.tsx"
+    values:
+      content_type: "application/javascript"
+  - scope:
+      path: "*.ts"
+    values:
+      content_type: "application/javascript"

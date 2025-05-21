@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Webshop</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              light: '#67e8f9', // cyan-300
+              DEFAULT: '#06b6d4', // cyan-500
+              dark: '#0e7490', // cyan-700
+            },
+            secondary: {
+              light: '#fde047', // yellow-300
+              DEFAULT: '#facc15', // yellow-500
+              dark: '#eab308', // yellow-600
+            },
+            neutral: {
+              100: '#f3f4f6', // gray-100
+              200: '#e5e7eb', // gray-200
+              300: '#d1d5db', // gray-300
+              400: '#9ca3af', // gray-400
+              500: '#6b7280', // gray-500
+              600: '#4b5563', // gray-600
+              700: '#374151', // gray-700
+              800: '#1f2937', // gray-800
+              900: '#111827', // gray-900
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.1.0/",
+    "react": "https://esm.sh/react@^19.1.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.6.0"
+  }
+}
+</script>
+</head>
+<body class="bg-neutral-100 text-neutral-800 font-sans">
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
+<link rel="stylesheet" href="index.css">
+<script src="index.tsx" type="module"></script>

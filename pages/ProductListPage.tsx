@@ -147,7 +147,7 @@ const ProductListPage: React.FC = () => {
             </div>
           ) : (
             <div className="text-center py-12 bg-white rounded-lg shadow">
-              <img src="/assets/images/no-results.svg" alt="No products found" className="mx-auto h-40 mb-4" /> {/* Add a relevant SVG or image */}
+              <img src="assets/images/no-results.svg" alt="No products found" className="mx-auto h-40 mb-4" /> {/* Add a relevant SVG or image */}
               <h3 className="text-xl font-semibold text-neutral-700 mb-2">No Products Found</h3>
               <p className="text-neutral-500 mb-4">
                 We couldn't find any products matching your criteria. Try adjusting your filters or search term.

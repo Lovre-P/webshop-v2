@@ -1,5 +1,6 @@
 {
   "name": "Modern Webshop",
   "description": "A stylish and functional frontend for an e-commerce platform, built with React, TypeScript, and Tailwind CSS. It features product listings, a shopping cart, checkout process, and more.",
-  "requestFramePermissions": []
+  "requestFramePermissions": [],
+  "prompt": ""
 }
